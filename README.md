@@ -27,8 +27,7 @@ $ vagrant up
 ==> default: Rsyncing folder: /Users/cbn/projects/elag-ansible-vagrant/ => /vagrant
 
 ```
-
-At this point it will run through an initial build. Once complete, yuo are done and ready for the workshop You can now shut down your virtual machine and it'll be ready to go for the workshop. You shut it down with:
+Once complete, yuo are done preparing, and ready for the workshop. You can now shut down your virtual machine and it'll be ready to go for the workshop. You shut it down with:
 
 ```
 vagrant halt
