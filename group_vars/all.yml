@@ -1,0 +1,20 @@
+---
+
+catmandu_config_stores:
+  - name: elasticsearch
+    package: ElasticSearch
+    index_name: catmandu
+  - name: files
+    package: "File::Simple"
+    options:
+      - { name: "root", value: "t/data" }
+
+
+catmandu_config_importers:
+  - name: flandrica
+    package: OAI
+    options:
+        - { name: "url", value: "https://lib.ugent.be/oai" }
+        - { name: "set", value: "flandrica" }
+        - { name: "handler", value: "marcxml" }
+        - { name: "metadataPrefix", value: "marc21" }

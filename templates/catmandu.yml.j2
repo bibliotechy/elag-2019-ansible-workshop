@@ -1,0 +1,31 @@
+---
+
+{% if catmandu_config_stores is defined and catmandu_config_stores %}
+store:
+{% for store in catmandu_config_stores %}
+  {{ store.name }}:
+    package: {{ store.package }}
+    options:
+{% for option in (store.options | default([])) %}
+      {{ option.name }}: {{ option.value }}
+{% endfor %}
+{% if store.index_name is defined %}
+    index_name: {{ store.index_name }}
+{% endif %}
+{% if store.database_name is defined %}
+    index_name: {{ store.database_name }}
+{% endif %}
+{% endfor %}
+{% endif %}
+
+{% if catmandu_config_importers is defined and catmandu_config_importers %}
+importer:
+{% for importer in catmandu_config_importers %}
+  {{ importer.name }}:
+    package: {{ importer.package }}
+    options:
+{% for option in (importer.options | default([])) %}
+      {{ option.name }}: {{ option.value }}
+{% endfor %}
+{% endfor %}
+{% endif %}
