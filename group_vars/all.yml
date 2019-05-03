@@ -1,5 +1,10 @@
 ---
 
+catmandu_additional_perl_modules:
+  - Catmandu::Importer::OAI
+  - Catmandu::OAI
+  - Catmandu::Store::ElasticSearch
+
 catmandu_config_stores:
   - name: elasticsearch
     package: ElasticSearch
@@ -8,7 +13,6 @@ catmandu_config_stores:
     package: "File::Simple"
     options:
       - { name: "root", value: "t/data" }
-
 
 catmandu_config_importers:
   - name: flandrica

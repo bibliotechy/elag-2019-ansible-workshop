@@ -1,0 +1,31 @@
+---
+
+
+- name: install the 'Development tools' package group
+  yum:
+    name: "@Development tools"
+    state: present
+
+- name: Install some dependencies
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop: "{{ catmandu_package_dependencies }}"
+
+
+- name: Install basic perl modules for Catmandu
+  cpanm:
+    name: "{{ item }}"
+  loop: "{{ catmandu_basic_perl_modules }}"
+
+- name: Install additoinal perl modules for Catmandu
+  cpanm:
+    name: "{{ item }}"
+  loop: "{{ catmandu_additional_perl_modules }}"
+
+- name: Add catmandu config to preferred directory
+  template:
+    src: catmandu.yml.j2
+    dest: "{{ catmandu_config_file_path }}"
+    owner: "{{ catmandu_config_file_owner }}"
+    group: "{{ catmandu_config_file_group }}"

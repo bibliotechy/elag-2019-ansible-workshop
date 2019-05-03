@@ -13,50 +13,6 @@
         policy: targeted
         state: permissive
   roles:
-    - java
-    - elasticsearch
-
-- name: Setup Catmandu
-  hosts: all
-  become: true
-  tasks:
-
-    - name: install the 'Development tools' package group
-      yum:
-        name: "@Development tools"
-        state: present
-
-    - name: Install some dependencies
-      yum:
-        name: "{{ item }}"
-        state: present
-      loop:
-        - perl-devel
-        - perl-YAML
-        - perl-CPAN
-        - perl-App-cpanminus
-        - openssl-devel
-        - tcp_wrappers-devel
-        - expat
-        - expat-devel
-        - libxml2
-        - libxml2-devel
-        - libxslt
-        - libxslt-devel
-
-    - name: Install perl modules for Catmandu
-      cpanm:
-        name: "{{ item }}"
-      loop:
-        - autodie
-        - Catmandu
-        - Catmandu::MARC
-        - Catmandu::Importer::OAI
-        - Catmandu::OAI
-        - Catmandu::Store::ElasticSearch
-
-    - name: Add catmandu config to home directory
-      template:
-        src: catmandu.yml.j2
-        dest: /home/{{ ansible_user }}/catmandu.yml
-        owner: "{{ ansible_user }}"
+    - geerlingguy.java
+    - geerlingguy.elasticsearch
+    - catmandu

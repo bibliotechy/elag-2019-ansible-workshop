@@ -1,0 +1,32 @@
+---
+
+## RED HAT / CENTOS PACKAGES
+catmandu_package_dependencies:
+  - perl-devel
+  - perl-YAML
+  - perl-CPAN
+  - perl-App-cpanminus
+  - openssl-devel
+  - tcp_wrappers-devel
+  - expat
+  - expat-devel
+  - libxml2
+  - libxml2-devel
+  - libxslt
+  - libxslt-devel
+
+catmandu_basic_perl_modules:
+  - autodie
+  - Catmandu
+  - Catmandu::MARC
+
+# Here you can add perl modules that add fucntionality
+# as listed at http://librecat.org/distributions.html
+catmandu_additional_perl_modules: []
+
+catmandu_config_file_path: /home/{{ ansible_user }}/catmandu.yml
+catmandu_config_file_owner: "{{ ansible_user }}"
+catmandu_config_file_group: "{{ ansible_user }}"
+
+catmandu_config_stores: []
+catmandu_config_importers: []
