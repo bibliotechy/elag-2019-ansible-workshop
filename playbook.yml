@@ -13,8 +13,8 @@
         policy: targeted
         state: permissive
   roles:
-    - java
-    - elasticsearch
+    - geerlingguy.java
+    - geerlingguy.elasticsearch
 
 - name: Setup Catmandu
   hosts: all
