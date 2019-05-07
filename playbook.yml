@@ -1,0 +1,39 @@
+---
+
+- name: Setup Catmandu
+  hosts: catmandu
+  become: true
+  tasks:
+    - name: install the 'Development tools' package group
+      yum:
+        name: "@Development tools"
+        state: present
+    - name: Install some dependencies
+      yum:
+        name: "{{ item }}"
+        state: present
+      loop:
+        - perl-devel
+        - perl-YAML
+        - perl-CPAN
+        - perl-App-cpanminus
+        - perl-LWP-Protocol-https
+        - perl-Crypt-SSLeay
+        - openssl-devel
+        - tcp_wrappers-devel
+        - expat
+        - expat-devel
+        - libxml2
+        - libxml2-devel
+        - libxslt
+        - libxslt-devel
+
+    - name: Install perl modules for Catmandu
+      cpanm:
+        name: "{{ item }}"
+      loop:
+        - autodie
+        - Catmandu
+        - Catmandu::MARC
+        - Catmandu::Importer::OAI
+        - Catmandu::OAI
