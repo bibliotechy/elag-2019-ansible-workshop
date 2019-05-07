@@ -10,5 +10,15 @@ Vagrant.configure(2) do |config|
   config.vm.box = 'centos/7'
 
   config.vm.network 'forwarded_port', guest: 9200, host: 9200
-  
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook       = "playbook.yml"
+    ansible.install_mode   = :pip
+    ansible.inventory_path = "inventory/vagrant"
+    ansible.limit          = "all"
+    ansible.galaxy_role_file = "requirements.yml"
+    ansible.galaxy_roles_path = "/etc/ansible/roles"
+    ansible.galaxy_command = "sudo ansible-galaxy install --role-file=%{role_file} --roles-path=%{roles_path} --force"
+  end
+
+
 end
